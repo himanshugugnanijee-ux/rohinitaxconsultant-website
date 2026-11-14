@@ -5,6 +5,11 @@
   if (b && n) b.addEventListener('click', function () {
     var o = n.classList.toggle('open'); b.setAttribute('aria-expanded', o ? 'true' : 'false');
   });
+  // mobile: tap Services to open / close its list
+  var dd = document.querySelector('.nav-drop > a');
+  if (dd) dd.addEventListener('click', function (e) {
+    if (window.matchMedia('(max-width:980px)').matches) { e.preventDefault(); var w = dd.parentNode; var o = w.classList.toggle('open'); dd.setAttribute('aria-expanded', o ? 'true' : 'false'); }
+  });
   // query popup
   var m = document.querySelector('[data-modal]');
   function show(v) { if (!m) return; m.hidden = !v; if (v) { var i = m.querySelector('input'); if (i) i.focus(); } }
